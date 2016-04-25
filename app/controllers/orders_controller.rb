@@ -21,4 +21,8 @@ class OrdersController < ApplicationController
   def show
     @order = current_user.orders.find_by(id: params[:id]) || not_found
   end
+
+  def require_login
+    redirect_to login_path unless current_user
+  end
 end
